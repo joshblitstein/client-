@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Player from '../components/audioPlayer'
+import FavoriteAudio from '../components/favoriteAudio'
 
 const Home = ({ files, history, getRandomFiles, addToFavorites }) => {
-
-    const [fileName, seFileName] = useState('')
 
     return (
         <div>
@@ -15,11 +13,7 @@ const Home = ({ files, history, getRandomFiles, addToFavorites }) => {
                 <div style={{ margin: '0 auto'}}>
                     { files.length > 0 && files.map((file)=>{
                         return(
-                            <div className='audio-player'>
-                                <input type="text" name="fileName" value={fileName} placeholder="Name Sound"></input>
-                                <Player num={file}/>
-                                <button onClick={()=>addToFavorites(file)}>Save</button>
-                            </div>
+                            <FavoriteAudio key={file} file={file} addToFavorites={addToFavorites} />
                         )
                     })}
                 </div>

@@ -2,13 +2,15 @@ import React from 'react';
 import Player from '../components/audioPlayer'
 
 
-const Saved = ({ savedFiles, history, removeFromFavorites, removeAllFromFavorities }) => {
+const Saved = ({ savedFiles, history, removeFromFavorites, removeAll }) => {
+    
     return (
         <div>
             <h1>{ savedFiles.length > 0 ? 'Saved Sounds' : 'No Saved sounds'}</h1>
             { savedFiles.length > 0 && savedFiles.map((file)=>{
                 return(
                     <div>
+                        <input type="text" name="fileName" value={file.name} placeholder="Name Sound"></input>
                         <Player num={file}/>
                         <button onClick={()=>removeFromFavorites(file)}>Remove</button>
                     </div>
@@ -17,7 +19,7 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAllFromFavoriti
             <button onClick={()=>history.push('/')}>
                 Go to home
             </button>
-            <button onClick={()=>removeAllFromFavorities}>Remove All</button>
+            <button onClick={()=>removeAll()}>Remove All</button>
         </div>
     );
 };

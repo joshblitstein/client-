@@ -35,12 +35,11 @@ function App() {
     setFiles(array)
   }
 
-  const addToFavorites = (sound) =>{
+  const addToFavorites = (sound, fileName) =>{
+    let newSound = { name: fileName, sound: sound }
     let array = [...savedFiles]
-    array.push(sound)
+    array.push(newSound)
     setSavedFiles(array)
-    console.log(array)
-
   }
 
   const removeFromFavorites = (sound) => setSavedFiles(savedFiles.filter((file) => file !== sound));
@@ -52,7 +51,7 @@ function App() {
         <div className = "Main">
           <Switch>
             <Route exact path='/' render={(routerProps) => <Home {...routerProps} files={files} getRandomFiles={getRandomFiles} addToFavorites={addToFavorites}  />}/>
-            <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAllFromFavorites={removeAllFromFavorites} />}/>
+            <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAll={removeAllFromFavorites} />}/>
           </Switch>
         </div>
       </div>
