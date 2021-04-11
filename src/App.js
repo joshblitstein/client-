@@ -4,32 +4,23 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './containers/Home'
 import Saved from './containers/Saved'
 
-// import { Fetch } from './fetch'
-// import { Audo } from './audio'
-// import { Play } from './func'
-// import {Clas} from './classcomp'
-// import { Test } from './test'
-// import { Button } from './test2'
-
 function App() {
 
   const [files, setFiles] = useState([])
   const [savedFiles, setSavedFiles] = useState([])
-  const [nameOfSound, setnameOFSound] = useState('')
-
   
   useEffect(()=>{
+    let favorites = localStorage.getItem('myFavorites')
+    if (favorites) setSavedFiles(JSON.parse(favorites))
     getRandomFiles()
   },[])
-
-  // console.log(files)
 
 
   function getRandomFiles(){
     let amountOfFiles = 5;
     let array = []
     for (let i=0; i<amountOfFiles; i++){
-      let num = Math.floor(Math.random() * 100)
+      let num = Math.floor(Math.random() * 100) + 1
       array.push(num)
     }
     setFiles(array)
@@ -40,11 +31,21 @@ function App() {
     let array = [...savedFiles]
     array.push(newSound)
     setSavedFiles(array)
+    localStorage.setItem('myFavorites', JSON.stringify(array) )
   }
 
-  const removeFromFavorites = (sound) => setSavedFiles(savedFiles.filter((file) => file !== sound));
-  const removeAllFromFavorites = () => setSavedFiles([]);
+  const removeAllFromFavorites = () => {
+    setSavedFiles([])
+    localStorage.setItem('myFavorites', JSON.stringify([]))
+  };
   
+  const removeFromFavorites = (sound) => {
+    let array = savedFiles.filter((file) => file !== sound)
+    setSavedFiles(array)
+    localStorage.setItem('myFavorites', JSON.stringify(array))
+  }
+  
+
   return (
     <Router>
       <div className="App">
