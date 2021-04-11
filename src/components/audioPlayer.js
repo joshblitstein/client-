@@ -4,10 +4,9 @@ import React, { useState, useEffect } from 'react'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css';
 
-export default function Test({num}){
+export default function Player({num}){
     
     const [files, setFiles] = useState('');
-    const [fileName, seFileName] = useState('')
 
     useEffect(()=>{
         getData();
@@ -21,7 +20,6 @@ export default function Test({num}){
     
     return (
         <div className="audio-section">
-            <label>Name File</label><input type="text" name="fileName" value="fileName"></input>
             <AudioPlayer src = {files} autoPlayAfterSrcChange = {false}/>
         </div>
         );

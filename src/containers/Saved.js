@@ -1,5 +1,5 @@
 import React from 'react';
-import Test from '../components/test'
+import Player from '../components/audioPlayer'
 
 
 const Saved = ({ savedFiles, history, removeFromFavorites, removeAllFromFavorities }) => {
@@ -9,7 +9,7 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAllFromFavoriti
             { savedFiles.length > 0 && savedFiles.map((file)=>{
                 return(
                     <div>
-                        <Test num={file}/>
+                        <Player num={file}/>
                         <button onClick={()=>removeFromFavorites(file)}>Remove</button>
                     </div>
                 )
