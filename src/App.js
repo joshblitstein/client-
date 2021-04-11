@@ -42,9 +42,9 @@ function App() {
     console.log(array)
 
   }
-const zero = 0;
+
   const removeFromFavorites = (sound) => setSavedFiles(savedFiles.filter((file) => file !== sound));
-  const removeAllFromFavorites = () => setSavedFiles(savedFiles.filter((file =>file =='')));
+  const removeAllFromFavorites = () => setSavedFiles([]);
   
   return (
     <Router>
