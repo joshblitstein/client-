@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Test from '../components/test'
 
 const Home = ({ files, history, getRandomFiles, addToFavorites }) => {
+
+console.log(files)
+
+
 
     return (
         <div>
@@ -9,14 +13,17 @@ const Home = ({ files, history, getRandomFiles, addToFavorites }) => {
                 HOME
             </h1>
 
-            { files.length > 0 && files.map((file)=>{
+            { 
+     
+            files.length > 0 && files.map((file)=>{
+               
                 return(
                     <div>
-                        <Test num={file}/>
+                        <Test num={file} />
                         <button onClick={()=>addToFavorites(file)}>Save</button>
                     </div>
                 )
-            })}
+            })} 
             <button onClick ={getRandomFiles}>Randomize</button> 
             <button onClick={()=>history.push('/saved')}>
                 Go to my favorites

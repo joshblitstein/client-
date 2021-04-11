@@ -2,7 +2,7 @@ import React from 'react';
 import Test from '../components/test'
 
 
-const Saved = ({ savedFiles, history, removeFromFavorites }) => {
+const Saved = ({ savedFiles, history, removeFromFavorites, removeAllFromFavorities }) => {
     return (
         <div>
             <h1>{ savedFiles.length > 0 ? 'Saved Sounds' : 'No Saved sounds'}</h1>
@@ -17,6 +17,7 @@ const Saved = ({ savedFiles, history, removeFromFavorites }) => {
             <button onClick={()=>history.push('/')}>
                 Go to home
             </button>
+            <button onClick={()=>removeAllFromFavorities}>Remove All</button>
         </div>
     );
 };

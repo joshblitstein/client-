@@ -15,6 +15,7 @@ function App() {
 
   const [files, setFiles] = useState([])
   const [savedFiles, setSavedFiles] = useState([])
+  const [nameOfSound, setnameOFSound] = useState('')
 
   
   useEffect(()=>{
@@ -41,17 +42,17 @@ function App() {
     console.log(array)
 
   }
-
+const zero = 0;
   const removeFromFavorites = (sound) => setSavedFiles(savedFiles.filter((file) => file !== sound));
-
+  const removeAllFromFavorites = () => setSavedFiles(savedFiles.filter((file =>file =='')));
   
   return (
     <Router>
       <div className="App">
         <div className = "Main">
           <Switch>
-            <Route exact path='/' render={(routerProps) => <Home {...routerProps} files={files} getRandomFiles={getRandomFiles} addToFavorites={addToFavorites} />}/>
-            <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} />}/>
+            <Route exact path='/' render={(routerProps) => <Home {...routerProps} files={files} getRandomFiles={getRandomFiles} addToFavorites={addToFavorites}  />}/>
+            <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAllFromFavorites={removeAllFromFavorites} />}/>
           </Switch>
         </div>
       </div>
