@@ -11,13 +11,14 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAll }) => {
     //     if (favorites) setSounds(JSON.parse(favorites))
 
     // },[])
+    //if auth take savedfiles and post to db new schema -- remove --
 
     return (
-        <div>
+        <div >
             <h1>{ savedFiles.length > 0 ? 'Saved Sounds' : 'No Saved sounds'}</h1>
             { savedFiles.length > 0 && savedFiles.map((file)=>{
                 return(
-                    <div>
+                    <div style ={{ margin: '0 auto'}}>
                         <input type="text" name="fileName" value={file.name} placeholder="Name Sound"></input>
                         <Player num={file.sound}/>
                         <button onClick={()=>removeFromFavorites(file)}>Remove</button>
