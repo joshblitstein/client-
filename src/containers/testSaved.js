@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Player from '../components/audioPlayer'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import axios from 'axios'
 
 
-const Saved = ({ savedFiles, history, removeFromFavorites, removeAll }) => {
+const Saved = ({ savedFiles, history, removeFromFavorites, removeAll,  auth: {isAuthenticated, loading} }) => {
 
     // const [sounds, setSounds] = useState([])
 
@@ -12,7 +15,8 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAll }) => {
 
     // },[])
     //if auth take savedfiles and post to db new schema -- remove --
-    console.log(savedFiles)
+    
+
 
     return (
         <div >
@@ -34,4 +38,16 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAll }) => {
     );
 };
 
-export default Saved;
+
+
+Saved.propTypes = {
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+}
+
+
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps)(Saved);
