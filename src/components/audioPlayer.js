@@ -13,7 +13,7 @@ export default function Player({num}){
     }, [num])
     
     function getData(){
-        fetch(`http://localhost:5000/test/${num}.mp3`)
+        fetch(`http://localhost:5000/hi/static/${num}.mp3`)
         .then((res) =>res.url)
         .then(data =>setFiles(data))       
     }

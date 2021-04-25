@@ -16,7 +16,7 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAll,  auth: {is
     // },[])
     //if auth take savedfiles and post to db new schema -- remove --
     
-
+    isAuthenticated && console.log(savedFiles)
 
     return (
         <div >
@@ -30,6 +30,7 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAll,  auth: {is
                     </div>
                 )
             })}
+           
             <button onClick={()=>history.push('/')}>
                 Go to home
             </button>

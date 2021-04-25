@@ -7,6 +7,8 @@ import  Register  from './components/register'
 import  Login  from './components/login'
 import  NavBar  from './components/NavBar'
 import Alert from './components/alert'
+import MyPath from './components/myPath'
+import Test from './test2'
 //redux
 import { Provider } from 'react-redux'
 import store from './store'
@@ -84,7 +86,8 @@ useEffect(() => {
            <Route exact path='/login' render={(routerProps) => <Login />} />
             <Route exact path='/' render={(routerProps) => <Home {...routerProps} files={files} getRandomFiles={getRandomFiles} addToFavorites={addToFavorites}  />}/>
             <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAll={removeAllFromFavorites} />}/>
-            
+            <Route exact path = '/mypath' render={(routerProps) => <MyPath />} />
+            <Route exact path = '/test' render={(routerProps) => <Test />} />
           </Switch>
         </div>
       </div>
