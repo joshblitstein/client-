@@ -16,7 +16,7 @@ export default function Testfetch() {
 
 function getData(){
     fetch(`http://localhost:5000/hi/random`)
-    .then((res) =>res)
+    .then((res) =>res.url)
     .then(data => setArr(data))
 }
 console.log(arr)

@@ -89,7 +89,7 @@ useEffect(() => {
             <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAll={removeAllFromFavorites} />}/>
             <Route exact path = '/mypath' render={(routerProps) => <MyPath />} />
             <Route exact path = '/test' render={(routerProps) => <Test />} />
-            {/* <Route exact path = '/test2' render={(routerProps) => <Testfetch />} /> */}
+             <Route exact path = '/test2' render={(routerProps) => <Testfetch />} /> 
 
            
           </Switch>
