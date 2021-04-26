@@ -9,6 +9,7 @@ import  NavBar  from './components/NavBar'
 import Alert from './components/alert'
 import MyPath from './components/myPath'
 import Test from './test2'
+import Testfetch from './components/testfetch'
 //redux
 import { Provider } from 'react-redux'
 import store from './store'
@@ -88,6 +89,9 @@ useEffect(() => {
             <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAll={removeAllFromFavorites} />}/>
             <Route exact path = '/mypath' render={(routerProps) => <MyPath />} />
             <Route exact path = '/test' render={(routerProps) => <Test />} />
+            {/* <Route exact path = '/test2' render={(routerProps) => <Testfetch />} /> */}
+
+           
           </Switch>
         </div>
       </div>
