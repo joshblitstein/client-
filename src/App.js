@@ -10,6 +10,7 @@ import Alert from './components/alert'
 import MyPath from './components/myPath'
 import Test from './test2'
 import Testfetch from './components/testfetch'
+import axios from 'axios'
 //redux
 import { Provider } from 'react-redux'
 import store from './store'
@@ -41,7 +42,6 @@ function App() {
       if(num !== num ){
         array.push(num)
       }
-
     }
     setFiles(array)
     //console.log(array)
@@ -56,7 +56,21 @@ function App() {
     array.push(newSound)
     setSavedFiles(array)
     localStorage.setItem('myFavorites', JSON.stringify(array) )
-    //console.log(array)
+    console.log(newSound)
+
+    if(!localStorage.token){
+      console.log('gooseberry')
+    }else{
+
+    axios.post(`http://localhost:5000/profile`, {
+      "files": [
+        {
+          "fileName": newSound.name,
+          "number": newSound.sound
+        }
+      ]
+  }
+  ).then(res => console.log(res))}
 
   
   }
@@ -89,7 +103,7 @@ useEffect(() => {
             <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAll={removeAllFromFavorites} />}/>
             <Route exact path = '/mypath' render={(routerProps) => <MyPath />} />
             <Route exact path = '/test' render={(routerProps) => <Test />} />
-             <Route exact path = '/test2' render={(routerProps) => <Testfetch />} /> 
+            
 
            
           </Switch>

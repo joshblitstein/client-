@@ -6,7 +6,7 @@ import 'react-h5-audio-player/lib/styles.css';
 
 export default function Player({num}){
     
-    const [files, setFiles] = useState('');
+    const [file, setFiles] = useState('');
 
     useEffect(()=>{
         getData();
@@ -17,10 +17,11 @@ export default function Player({num}){
         .then((res) =>res.url)
         .then(data =>setFiles(data))       
     }
-    
+
+  
     return (
         <div className="audio-section">
-            <AudioPlayer src = {files} autoPlayAfterSrcChange = {false}/>
+            <AudioPlayer src = {file} autoPlayAfterSrcChange = {false}/>
         </div>
         );
 
