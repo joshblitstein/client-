@@ -62,7 +62,7 @@ export const register = ({ name, email, password}) => async dispatch => {
    
 };
 
-
+ 
 
 //login
 export  const login = (email, password ) => async dispatch => {

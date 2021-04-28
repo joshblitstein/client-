@@ -10,6 +10,7 @@ import Alert from './components/alert'
 import MyPath from './components/myPath'
 import Test from './test2'
 import Testfetch from './components/testfetch'
+import Zip from './components/zip'
 import axios from 'axios'
 //redux
 import { Provider } from 'react-redux'
@@ -81,9 +82,32 @@ function App() {
   };
   
   const removeFromFavorites = (sound) => {
+
+    if(!localStorage.token){
+      console.log('gooseberry')
+
+    }else{
+      console.log(sound)
+    axios.post(`http://localhost:5000/profile/gone`, {
+      "files": [
+        {
+          "fileName": sound.name,
+          "number": sound.number
+        }
+      ]
+  }
+  ).then(res => console.log(res))} 
+
+
+
+
     let array = savedFiles.filter((file) => file !== sound)
     setSavedFiles(array)
     localStorage.setItem('myFavorites', JSON.stringify(array))
+    console.log(sound.name)
+
+    
+
   }
   
 useEffect(() => {
@@ -103,6 +127,7 @@ useEffect(() => {
             <Route exact path = '/saved' render={(routerProps) => <Saved {...routerProps} savedFiles={savedFiles} removeFromFavorites={removeFromFavorites} removeAll={removeAllFromFavorites} />}/>
             <Route exact path = '/mypath' render={(routerProps) => <MyPath />} />
             <Route exact path = '/test' render={(routerProps) => <Test />} />
+            {/* <Route exact path = '/test' render={(routerProps) => <Zip number={3} />} /> */}
             
 
            

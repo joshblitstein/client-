@@ -16,13 +16,13 @@ const Saved = ({ savedFiles, history, removeFromFavorites, removeAll,  auth: {is
     // },[])
     //if auth take savedfiles and post to db new schema -- remove --
     
-    isAuthenticated && savedFiles.map((file)=>{
+   /*  isAuthenticated && savedFiles.map((file)=>{
         axios.post(`http://localhost:5000/profile`, {
             "fileName": file.name,
             "number": file.sound
         }
         ).then(res => console.log(res))
-    })
+    }) */
 
     return (
         <div >

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { login } from '../actions/auth'
+import axios from 'axios'
 
 
 const Login = ( { login, isAuth } ) =>{
@@ -28,6 +29,11 @@ const Login = ( { login, isAuth } ) =>{
     
 
         if(isAuth){
+
+
+            axios.post('http://localhost:5000/profile/user/get', email)
+
+
             return <Redirect to="/"/>
         }
     
