@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
 import JSZip from "jszip"
+import { saveAs } from 'file-saver'
+import JSZipUtils from 'jszip-utils'
 
 
-export default function Zip(number) {
+export default function Zip({number}) {
 
     const [file, setFiles] = useState('');
 
 
     useEffect(()=>{
-        getData();
+        getData(); 
     }, [number])
 
     function getData(){
@@ -18,22 +20,53 @@ export default function Zip(number) {
         .then(data =>setFiles(data))       
     }
 
-  /*  function zip(){ const zip = new JSZip();
-
+  /*   function zip(){ 
+    const zip = new JSZip();
+        console.log(file)
     const aud = zip.folder('peter')
-    aud.file('buns.mp3', file, {base64: true})
+        let write = new Blob(file);
+        let file1 =  write.arrayBuffer()
+
+        let fil = new FileReader(file)
+        console.log(file1)
+    aud.file('1.mp3',file1, {base64: true} ) 
         
     zip.generateAsync({type:"blob"}).then(function(content) {
         // see FileSaver.js
         saveAs(content, "example.zip");
-    });}
- */
+    });} */
+ 
+
+    function zip(){
+        new JSZip.external.Promise(function (resolve, reject) {
+            JSZipUtils.getBinaryContent(file, function(err, data) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            });
+        }).then(function (data) {
+            return JSZip.loadAsync(data);
+        })
+        .then(file =>console.log(file))
+    }
+
+
+
+
+
+
+
+
+
 
 
 
     return (
         <div>
-            <button>zipup</button>
+            <button onClick ={zip}>zipup</button>
+            <audio controls src ={file}></audio>
         </div>
     )
 }
