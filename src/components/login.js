@@ -14,6 +14,7 @@ const Login = ( { login, isAuth } ) =>{
         email: '',
         password: ''  
     })
+    const [userFiles, setUserFiles] = useState('')
    
 
         const {  email, password } = formData
@@ -26,15 +27,18 @@ const Login = ( { login, isAuth } ) =>{
           login(email, password);
             
         }
-    
+        
+        console.log(userFiles)
 
         if(isAuth){
 
+       
+            
+        axios.get(`http://localhost:5000/profile/myfiles`).then(res =>console.log(res))
+        .then(data => setUserFiles(data))
+        return <Redirect to="/"/>
 
-            axios.post('http://localhost:5000/profile/user/get', email)
-
-
-            return <Redirect to="/"/>
+            
         }
     
     return (

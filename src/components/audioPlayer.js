@@ -8,20 +8,20 @@ export default function Player({num}){
     
     const [file, setFiles] = useState('');
 
-    useEffect(()=>{
+    /*  useEffect(()=>{
         getData();
     }, [num])
     
-    function getData(){
+     function getData(){
         fetch(`http://localhost:5000/hi/static/${num}.mp3`)
         .then((res) =>res.url)
         .then(data =>setFiles(data))       
-    }
-
+    } */
+ 
   
     return (
         <div className="audio-section">
-            <AudioPlayer src = {file} autoPlayAfterSrcChange = {false}/>
+            <AudioPlayer src = {`http://localhost:5000/hi/static/${num}.mp3`} autoPlayAfterSrcChange = {false}/>
         </div>
         );
 

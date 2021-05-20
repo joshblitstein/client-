@@ -1,11 +1,39 @@
 .App {
   text-align: center;
+  background-color:whitesmoke;
 }
+
+/* @media only screen and (max-width: 600px) {
+
+ body{
+   color: brown;
+ }
+} */
 
 .sound-list{
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: auto;
 }
+
+.wrapper{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.wrapper > div:nth-child(1n){
+  background-color: gray;
+  padding: 10px;
+
+}
+
+
+
+
 
 .button-1{
   width: 125px;
@@ -19,5 +47,34 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 500px;
+  width: 300px;
 }
+
+
+@media screen and (max-width: 800px){
+  .wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+  
+  }
+  .wrapper > div:nth-child(1n){
+    background-color: gray;
+    padding: 10px;
+   /*  -webkit-transform: scale(0.8, 0.8); 
+    transform: scale(0.8, 0.8); */
+  }
+}
+
+/* @media  (max-width: 800px){
+  .wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr  ;
+  
+  }
+  .wrapper > div:nth-child(1n){
+    background-color: gray;
+    padding: 10px;
+     -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); 
+  }
+} */

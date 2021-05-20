@@ -21,6 +21,8 @@ function App() {
 
   if(localStorage.token){
     setAuthToken(localStorage.token)
+ 
+
 }
 
   const [files, setFiles] = useState([])
@@ -34,12 +36,12 @@ function App() {
 
 
   function getRandomFiles(){
-    let amountOfFiles = 5;
+    let amountOfFiles = 16;
     let array = []
     for (let i=0; i<amountOfFiles; i++){
       let num = Math.floor(Math.random() * 100) + 1
 
-      array.push(num)
+  array.push(num)
       if(num !== num ){
         array.push(num)
       }
@@ -51,7 +53,7 @@ function App() {
 
   }
 
-  const addToFavorites = (sound, fileName) =>{
+  const addToFavorites = async (sound, fileName) =>{
     let newSound = { name: fileName, sound: sound }
     let array = [...savedFiles]
     array.push(newSound)
@@ -63,7 +65,7 @@ function App() {
       console.log('gooseberry')
     }else{
 
-    axios.post(`http://localhost:5000/profile`, {
+    await axios.post(`http://localhost:5000/profile`, {
       "files": [
         {
           "fileName": newSound.name,
@@ -71,30 +73,35 @@ function App() {
         }
       ]
   }
-  ).then(res => console.log(res))}
+  ).catch(err=>console.log(err))
+  .then(res => console.log(res))}
 
   
   }
 
   const removeAllFromFavorites = () => {
     setSavedFiles([])
+    axios.post(`http://localhost:5000/profile/gone2`
+  ).then(res => console.log(res))
     localStorage.setItem('myFavorites', JSON.stringify([]))
   };
   
-  const removeFromFavorites = (sound) => {
+  const removeFromFavorites = async (sound) => {
 
     if(!localStorage.token){
       console.log('gooseberry')
 
     }else{
       console.log(sound)
-    axios.post(`http://localhost:5000/profile/gone`, {
-      "files": [
-        {
+    await axios.post(`http://localhost:5000/profile/gone1`, {
+      "files": 
+        [
+          {
           "fileName": sound.name,
-          "number": sound.number
+          "number": sound.sound
         }
       ]
+      
   }
   ).then(res => console.log(res))} 
 
@@ -104,7 +111,7 @@ function App() {
     let array = savedFiles.filter((file) => file !== sound)
     setSavedFiles(array)
     localStorage.setItem('myFavorites', JSON.stringify(array))
-    console.log(sound.name)
+    console.log(sound.name) 
 
     
 
@@ -112,6 +119,7 @@ function App() {
   
 useEffect(() => {
   store.dispatch(loadUser())
+  
 }, [])
   return (
 <Provider store={store}>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { setAlert } from '../actions/alert'
 import { register } from '../actions/auth'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 
 function Register ({ setAlert, register, isAuth}){
 
@@ -33,12 +34,15 @@ function Register ({ setAlert, register, isAuth}){
                     name, email, password
                 })
                 console.log('circumsicion')
+
+               
             }
 
         }
 
         if(isAuth){
-            return <Redirect tp ='/'/>
+           
+            return <Redirect to ='/'/>
         }
     
 
@@ -56,7 +60,7 @@ function Register ({ setAlert, register, isAuth}){
     )
 }
 
-Register.propTypes = {
+Register.propTypes = { 
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuth: PropTypes.bool,
